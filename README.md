@@ -293,18 +293,22 @@ docker exec -it airmozilla_web_1 bash
 
 How to contribute
 -----------------
-
 There are levels of contribution. All are appreciated.
-
 ### Filing bugs
 
+The product is `Webtools` and the component is `Air Mozilla`.
 The best start you can get is to file bugs when you spot things that are broken
 or could be made better. Don't be shy with filing bugs that are actually
 feature requests. Your voice will always be appreciated.
 
-[To file a bug go to this URL](https://bugzilla.mozilla.org/enter_bug.cgi?format=guided#h=dupes%7CAir+Mozilla%7COther)
+The link to file a new bug is:
+[https://bugzilla.mozilla.org/enter_bug.cgi?product=Webtools&component=Air%20Mozilla](https://bugzilla.mozilla.org/enter_bug.cgi?product=Webtools&component=Air%20Mozilla)
 
-### Taking bugs/Finding bugs to work on
+You only need to fill in the Summary, Description and possibly the URL.
+Try to describe as much as possible in your description and remember,
+screenshots are usually very helpful.
+
+### Taking bugs/Finding open bugs to work on
 
 If you [spot a bug](https://bugzilla.mozilla.org/buglist.cgi?product=Webtools&component=Air%20Mozilla&resolution=---)
 that you would like to work on, you can either just get started and when you
@@ -315,6 +319,22 @@ An even better way would be to jump into IRC on the `#airmozilla-dev` channel
 and ask around about the feature/bug you intend to work on.
 
 We don't assign bugs to people until after the bug is resolved.
+
+All open bugs are [listed on Bugzilla](https://bugzilla.mozilla.org/buglist.cgi?product=Webtools&component=Air Mozilla&resolution=---).
+The bugs are sorted by priority from P5 to P1 where P1 are the most "urgent".
+
+You can look for good beginner bugs by searching for the string `[good
+first bug]` in the Whiteboard field.
+
+
+### Pull requests
+
+If you make a change, the best way to have it landed is to make a
+pull request on GitHub.
+
+If you make a pull request on bug, paste the URL to the pull request
+into the bug as a new comment.
+
 
 ### Writing code patches
 
@@ -386,10 +406,22 @@ Consistency is key. Mixing conventions and styles makes code look
 un-maintained and sticking to *one* way makes it easier to just do
 instead of having to think about style choices.
 
-For Python, all code must be PEP8 and pyflakes compliant. See the section
-on **PEP8 and pyflakes**. There are some things that `flake8` can't
+For Python, all code must be PEP8 and pyflakes compliant.
+All python code, that isn't in "vendor", "vendor-local" or "migrations/*" 
+needs to pass pep8 and pyflakes. See the section on **PEP8 and pyflakes**.
+There are some things that `flake8` can't
 automatically check for. For example some choices on indentation using
 newlines to split code up.
+
+The best tip for checking this is to install `check.py` with:
+```
+pip install -e git+https://github.com/jbalogh/check.git#egg=check
+```
+
+Then, after you have changed some files, just `check.py` and it
+will check only the files you have worked on and staged in git.
+
+For python code, we use **4 spaces**.
 
 ```python
 # bad
@@ -403,6 +435,7 @@ channel = Channel.objects.create(
 )
 ```
 
+For javascript code, we use **4 spaces**.
 For Javascript, use the notation of spaced before and after brackets.
 
 ```javascript
